@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => 'music_oven',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,3 +94,10 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+/* 
+HOSTNAME		phpmyadmin.ecs.westminster.ac.uk		localhost
+USERNAME		w1715093								root
+PASSWORD		fwjOKK5PnCY5							root
+DATABASE		w1715093_0								music_oven
+*/

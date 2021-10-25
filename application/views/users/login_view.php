@@ -26,6 +26,10 @@
                             echo "<p class='text-success'>".$this->session->flashdata('user_registered');
                         }
 
+                        if ($this->session->flashdata('auth_failed')) {
+                            echo "<p class='text-danger'>".$this->session->flashdata('auth_failed');
+                        }
+
                         $form_attributes = array('id'=>'login_form', 'class'=>'mt-md-5');
                         $username_input_attributes = array('class'=>'form-control', 'placeholder'=>'Username', 'name'=>'username');
                         $password_input_attributes = array('class'=>'form-control', 'placeholder'=>'Password', 'name'=>'password');

@@ -38,7 +38,8 @@ class Users extends CI_Controller {
 
             } else {
 
-                redirect('home/index');
+                $this->session->set_flashdata('auth_failed', 'Invalid Username or Password');
+                redirect('users/login');
 
             }
         }
@@ -68,5 +69,24 @@ class Users extends CI_Controller {
                 redirect('users/login');
             }
         }
+    }
+
+    public function search()
+    {
+
+        if (!$this->session->userdata('logged_in')) {
+			redirect('users/login');
+		}
+        
+        $data['main_view'] = 'users/search_view';
+
+        $this->load->view('layouts/navbar');
+        $this->load->view('layouts/main', $data);
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('users/login');
     }
 }

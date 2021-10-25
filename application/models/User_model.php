@@ -42,6 +42,14 @@ class User_model extends CI_Model {
 
         return $insert_data;
     }
+
+    public function profile($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('users');
+
+       return $query->row();
+    }
 }
 
 ?>

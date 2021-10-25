@@ -25,12 +25,7 @@
                             echo $this->session->flashdata('errors');
                         }
 
-                        $options = array(
-                            null     => 'Music Genre...',
-                            1        => 'Jazz',
-                            2        => 'Blues',
-                            3        => 'Reggae',
-                        );
+                        $options = $this->config->item('music_genres');
 
                         $form_attributes = array('id'=>'login_form', 'class'=>'mt-md-5');
                         $fname_input_attributes = array('class'=>'form-control', 'placeholder'=>'First Name', 'name'=>'f_name');

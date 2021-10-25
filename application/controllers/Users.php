@@ -79,6 +79,7 @@ class Users extends CI_Controller {
 		}
         
         $data['main_view'] = 'users/search_view';
+        $data['search_results'] = $this->user_model->search();
 
         $this->load->view('layouts/navbar');
         $this->load->view('layouts/main', $data);

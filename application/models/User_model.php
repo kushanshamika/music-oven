@@ -50,6 +50,16 @@ class User_model extends CI_Model {
 
        return $query->row();
     }
+
+    public function search()
+    {
+        $this->db->where('id !=', $this->session->userdata('user_id'));
+        $this->db->where('music_genre', $this->input->post('music_genre'));
+
+        $query = $this->db->get('users');
+
+        return $query->result();
+    }
 }
 
 ?>

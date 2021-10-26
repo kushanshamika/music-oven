@@ -9,7 +9,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"><a href="#" class="link-dark"><?php echo $user->first_name . " " .  $user->last_name?></a></h5>
+                                <h5 class="card-title"><a href="<?php echo base_url(); ?>index.php/users/profile/<?php echo $user->username ?>" class="link-dark"><?php echo $user->first_name . " " .  $user->last_name?></a></h5>
                                 <p class="card-text"><small class="text-muted"><?php echo  element($user->music_genre, $this->config->item('music_genres')); ?></small></p> 
                             </div>
                         </div>

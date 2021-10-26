@@ -90,4 +90,14 @@ class Users extends CI_Controller {
         $this->session->sess_destroy();
         redirect('users/login');
     }
+
+    public function profile($username)
+    {
+        $data['main_view'] = 'users/public_view';
+		$data['messages'] = $this->message_model->get_profile_messages($username);
+		$data['profile_data'] = $this->user_model->profile($username);
+		$data['nav_bar'] = true;
+
+		$this->load->view('layouts/main', $data);
+    }
 }

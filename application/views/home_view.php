@@ -3,6 +3,8 @@
         <?php 
         
             $data['profile_data'] = $profile_data;
+            $data['logout_btn'] = TRUE;
+            $data['follow_btn'] = FALSE;
             $this->load->view('users/profile_view', $data); 
         
         ?>

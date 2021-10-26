@@ -16,7 +16,7 @@ class Home extends CI_Controller {
 	{
         $data['main_view'] = 'home_view';
 		$data['messages'] = $this->message_model->get_messages();
-		$data['profile_data'] = $this->user_model->profile($this->session->userdata('user_id'));
+		$data['profile_data'] = $this->user_model->profile($this->session->userdata('user_name'));
 		$data['nav_bar'] = true;
 
 		$this->load->view('layouts/main', $data);

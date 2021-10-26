@@ -7,17 +7,34 @@
         </div>
         <div class="card-body">
             <?php 
-                echo form_open('users/logout'); 
 
-                $data = array(
-                    'class' => 'btn btn-danger',
-                    'name' => 'submit',
-                    'value' => 'Logout'
-                );
+                if ($logout_btn) {
+                    echo form_open('users/logout'); 
 
-                echo form_submit($data);
+                    $data = array(
+                        'class' => 'btn btn-danger',
+                        'name' => 'submit',
+                        'value' => 'Logout'
+                    );
+    
+                    echo form_submit($data);
+    
+                    echo form_close(); 
+                }
 
-                echo form_close(); 
+                if ($follow_btn) {
+                    echo form_open('users/logout'); 
+
+                    $data = array(
+                        'class' => 'btn btn-primary',
+                        'name' => 'submit',
+                        'value' => 'Follow'
+                    );
+    
+                    echo form_submit($data);
+    
+                    echo form_close(); 
+                }
             ?>
         </div>
     </div>

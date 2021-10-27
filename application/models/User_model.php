@@ -60,6 +60,48 @@ class User_model extends CI_Model {
 
         return $query->result();
     }
+
+    public function follow($folower_id)
+    {
+        $user = $this->session->userdata('user_id');
+
+        $this->db->where('user_id', $folower_id);
+        $query = $this->db->get('followers');
+
+        $friend = FALSE;
+
+        if ($query->num_rows()) {
+            $friend = TRUE;
+
+            $data = array(
+                'friend' => TRUE
+            );
+
+            $this->db->where('follower_id', $user);
+            $this->db->where('user_id', $folower_id);
+            $this->db->update('followers', $data);
+        }
+
+        $data = array(
+            'user_id' => $user,
+            'follower_id' => $folower_id,
+            'friend' => $friend
+        );
+
+        $insert_data = $this->db->insert('followers', $data);
+
+        return $insert_data;
+    }
+
+    public function is_follow($user_id, $follower_id)
+    {
+        $this->db->where('follower_id', $follower_id);
+        $this->db->where('user_id', $user_id);
+
+        $query = $this->db->get('followers');
+
+        return $query->num_rows();
+    }
 }
 
 ?>

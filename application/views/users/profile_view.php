@@ -8,6 +8,8 @@
         <div class="card-body">
             <?php 
 
+                $hidden = array('folower_id' => $profile_data->id);
+
                 if ($logout_btn) {
                     echo form_open('users/logout'); 
 
@@ -22,8 +24,11 @@
                     echo form_close(); 
                 }
 
-                if ($follow_btn) {
-                    echo form_open('users/logout'); 
+                $user = $this->session->userdata('user_id');
+                $follower = $profile_data->id;
+
+                if ($follow_btn && !$this->user_model->is_follow($user, $follower)) {
+                    echo form_open('users/follow', '', $hidden); 
 
                     $data = array(
                         'class' => 'btn btn-primary',

@@ -14,7 +14,25 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <a href="#" class="btn btn-primary mt-4">Follow</a>
+
+                            <?php
+                                $loggedin_user = $this->session->userdata('user_id');
+                                $follower = $user->id;
+                
+                                if (!$this->user_model->is_follow($loggedin_user, $follower)) {
+                                    echo form_open('users/follow', '', $hidden); 
+                
+                                    $data = array(
+                                        'class' => 'btn btn-primary mt-4',
+                                        'name' => 'submit',
+                                        'value' => 'Follow'
+                                    );
+                    
+                                    echo form_submit($data);
+                    
+                                    echo form_close(); 
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

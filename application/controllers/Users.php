@@ -100,4 +100,14 @@ class Users extends CI_Controller {
 
 		$this->load->view('layouts/main', $data);
     }
+
+    public function follow()
+    {
+        $folower_id = $this->input->post('folower_id');
+
+        if ($this->user_model->follow($folower_id)) {
+                
+            redirect('home/index');
+        }
+    }
 }

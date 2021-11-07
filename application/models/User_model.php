@@ -35,7 +35,7 @@ class User_model extends CI_Model {
             'username' => $this->input->post('username'),
             'password' => $encripted_pass,
             'avatar' => 'https://myoctocat.com/assets/images/octocats/octocat-16.png',
-            'music_genre_id' => $this->input->post('music_genre_id'),
+            'music_genre' => $this->input->post('music_genre_id'),
         );
 
         $insert_data = $this->db->insert('users', $data);
@@ -101,6 +101,42 @@ class User_model extends CI_Model {
         $query = $this->db->get('followers');
 
         return $query->num_rows();
+    }
+
+    public function get_following($user_id)
+    {
+
+        $this->db->select('
+            followers.friend,
+            users.first_name,
+            users.last_name,
+            users.avatar
+        ');
+
+        $this->db->from('followers');
+        $this->db->join('users', 'users.id = followers.follower_id');
+        $this->db->where('followers.user_id', $user_id);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    public function get_followers($user_id)
+    {
+
+        $this->db->select('
+            followers.friend,
+            users.first_name,
+            users.last_name,
+            users.avatar
+        ');
+
+        $this->db->from('followers');
+        $this->db->join('users', 'users.id = followers.user_id');
+        $this->db->where('followers.follower_id', $user_id);
+        $query = $this->db->get();
+
+        return $query->result();
     }
 }
 

@@ -54,7 +54,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
         $this->form_validation->set_rules('re_password', 'Confirm Password', 'trim|required|matches[password]');
-        $this->form_validation->set_rules('music_genre_id', 'Music Genre', 'trim|required|numeric');
+        $this->form_validation->set_rules('music_genre_id', 'Music Genre', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
 

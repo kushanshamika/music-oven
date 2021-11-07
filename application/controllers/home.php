@@ -15,6 +15,8 @@ class Home extends CI_Controller {
 	public function index()
 	{
         $data['main_view'] = 'home_view';
+		$data['following'] = $this->user_model->get_following($this->session->userdata('user_id'));
+		$data['followers'] = $this->user_model->get_followers($this->session->userdata('user_id'));
 		$data['messages'] = $this->message_model->get_messages();
 		$data['profile_data'] = $this->user_model->profile($this->session->userdata('user_name'));
 		$data['nav_bar'] = true;

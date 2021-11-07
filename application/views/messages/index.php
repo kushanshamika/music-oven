@@ -4,10 +4,10 @@
     <div class="card-body">
         <div class="row mb-1">
             <div class="col-md-1">
-                <img alt="Image placeholder" src="https://myoctocat.com/assets/images/octocats/octocat-16.png" class="rounded-circle" width="50">
+                <img alt="Image placeholder" src="<?php echo $message->avatar; ?>" class="rounded-circle" width="50">
             </div>
             <div class="col-md-10">
-                <h5 class="card-title">Ruchini Thathsarani</h5>
+                <h5 class="card-title"><?php echo $message->first_name . " " . $message->last_name; ?></h5>
                 <p class="card-text"><small class="text-muted">3 mins ago</small></p>
             </div>
         </div>

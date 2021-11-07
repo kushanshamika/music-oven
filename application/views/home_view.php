@@ -50,16 +50,30 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <img alt="Image placeholder" src="https://myoctocat.com/assets/images/octocats/octocat-15.png" class="rounded-circle" width="40">
-                        Kushan Shamika<span class="text-muted">(Friend)</span>
-                    </li>
-                    <li class="list-group-item">Chasindu Kumarasiri</li>
-                    <li class="list-group-item">Sahas Punchihewa</li>
-                    <li class="list-group-item">Yasas Mahima</li>
+                    <?php foreach($following as $user): ?>
+                        <li class="list-group-item">
+                            <img alt="Image placeholder" src="<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
+                            <?php echo $user->first_name . " " . $user->last_name; ?>
+                            <?php if ($user->friend): ?>
+                                <span class="text-muted"> (Friend)</span>
+                            <?php endif ?>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <ul class="list-group list-group-flush">
+                    <?php foreach($followers as $user): ?>
+                        <li class="list-group-item">
+                            <img alt="Image placeholder" src="<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
+                            <?php echo $user->first_name . " " . $user->last_name; ?>
+                            <?php if ($user->friend): ?>
+                                <span class="text-muted"> (Friend)</span>
+                            <?php endif ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                </div>
             </div>
         </div>
     </div>

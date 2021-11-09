@@ -33,7 +33,7 @@
             <?php 
 
                 $data['messages'] = $messages;
-                $this->load->view('messages/index', $data); 
+                $this->load->view('messages/feed', $data); 
                 
             ?>
         </div>

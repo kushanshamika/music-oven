@@ -20,6 +20,9 @@
                                 $follower = $user->id;
                 
                                 if (!$this->user_model->is_follow($loggedin_user, $follower)) {
+
+                                    $hidden = array('folower_id' => $follower);
+
                                     echo form_open('users/follow', '', $hidden); 
                 
                                     $data = array(

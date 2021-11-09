@@ -1,4 +1,9 @@
-<?php foreach($messages as $message): ?>
+<?php 
+
+$timeAgo = new Westsworld\TimeAgo();
+foreach($messages as $message): 
+
+?>
 
 <div class="card mb-3 border-white me-3">
     <div class="card-body">
@@ -8,7 +13,7 @@
             </div>
             <div class="col-md-10">
                 <h5 class="card-title"><?php echo $message->first_name . " " . $message->last_name; ?></h5>
-                <p class="card-text"><small class="text-muted">3 mins ago</small></p>
+                <p class="card-text"><small class="text-muted"><?php echo $timeAgo->inWordsFromStrings($message->date); ?></small></p>
             </div>
         </div>
     

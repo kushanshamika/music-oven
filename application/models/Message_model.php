@@ -6,20 +6,27 @@ class Message_model extends CI_Model {
 
     public function get_messages()
     {
-        
-        $this->db->select('
-        messages.body,
-        messages.image,
-        users.first_name,
-        users.last_name,
-        users.avatar
-    ');
 
-    $this->db->from('messages');
-    $this->db->join('users', 'users.id = messages.user_id');
-        $query = $this->db->get();
+        $user_id = $this->session->userdata('user_id');
 
-        return $query->result();
+
+    $query = $this->db->query("
+        SELECT messages.body, messages.image, messages.date, users.first_name, users.last_name, users.avatar
+        FROM messages
+        INNER JOIN users
+        ON  messages.user_id=users.id
+        WHERE messages.user_id = '$user_id'
+        OR messages.user_id IN(
+        SELECT follower_id
+        FROM followers
+        WHERE followers.user_id = '$user_id'
+        )
+        ORDER BY messages.id DESC
+    ");
+
+    # Source - https://stackoverflow.com/a/35664340/8539515
+
+    return $query->result_array();
     }
 
     public function get_profile_messages($username)
@@ -31,6 +38,7 @@ class Message_model extends CI_Model {
         $this->db->select('
             messages.body,
             messages.image,
+            messages.date,
             users.first_name,
             users.last_name,
             users.avatar
@@ -39,6 +47,7 @@ class Message_model extends CI_Model {
         $this->db->from('messages');
         $this->db->join('users', 'users.id = messages.user_id');
         $this->db->where('messages.user_id', $user_id);
+        $this->db->order_by('messages.id', 'DESC');
         $query = $this->db->get();
 
         return $query->result();

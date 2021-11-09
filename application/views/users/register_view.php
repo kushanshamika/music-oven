@@ -32,12 +32,13 @@
                         $lname_input_attributes = array('class'=>'form-control', 'placeholder'=>'Last Name', 'name'=>'l_name');
                         $username_input_attributes = array('class'=>'form-control', 'placeholder'=>'Username', 'name'=>'username');
                         $email_input_attributes = array('class'=>'form-control', 'placeholder'=>'Email', 'name'=>'email');
+                        $file_input_attributes = array('class'=>'form-control', 'name'=>'avatar');
                         $password_input_attributes = array('class'=>'form-control', 'placeholder'=>'Password', 'name'=>'password');
                         $re_password_input_attributes = array('class'=>'form-control', 'placeholder'=>'Confirm Password', 'name'=>'re_password');
                         $music_genre_input_attributes = array('class'=>'form-select', 'name'=>'music_genre_id', 'options'=>$options);
                         $input_button_attributes = array('class'=>'btn btn-primary btn-lg', 'value'=>'Register', 'name'=>'submit');
 
-                        echo form_open('users/register', $form_attributes);
+                        echo form_open_multipart('users/register', $form_attributes);
 
                         ?>
 
@@ -62,6 +63,12 @@
                         <div class="row mt-md-3">
                             <div class="col">
                                 <?php echo form_input($email_input_attributes); ?>
+                            </div>
+                        </div>
+
+                        <div class="row mt-md-3">
+                            <div class="col">
+                                <?php echo form_upload($file_input_attributes); ?>
                             </div>
                         </div>
 

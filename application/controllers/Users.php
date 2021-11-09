@@ -63,7 +63,25 @@ class Users extends CI_Controller {
 
         } else {
 
-            if ($this->user_model->create_user()) {
+            $config['upload_path']          = './upload/';
+            $config['allowed_types']        = 'gif|jpg|png';
+    
+            $this->load->library('upload', $config);
+            $this->load->helper('file');
+    
+            if ($this->upload->do_upload('avatar'))
+            {
+
+                    $avatar = $this->upload->data('full_path');
+    
+    
+                    $this->load->library('s3_upload');
+                    $file_url = $this->s3_upload->upload_file($avatar);
+
+                    delete_files('./upload/');
+            }
+
+            if ($this->user_model->create_user($file_url)) {
                 
                 $this->session->set_flashdata('user_registered', 'User has been registered');
                 redirect('users/login');

@@ -22,7 +22,7 @@ class User_model extends CI_Model {
         }
     }
 
-    public function create_user() {
+    public function create_user($avatar) {
 
         $options = ['cost' => 12];
 
@@ -34,7 +34,7 @@ class User_model extends CI_Model {
             'email' => $this->input->post('email'),
             'username' => $this->input->post('username'),
             'password' => $encripted_pass,
-            'avatar' => 'https://myoctocat.com/assets/images/octocats/octocat-16.png',
+            'avatar' => $avatar,
             'music_genre' => $this->input->post('music_genre_id'),
         );
 

@@ -52,7 +52,7 @@
                 <ul class="list-group list-group-flush">
                     <?php foreach($following as $user): ?>
                         <li class="list-group-item">
-                            <img alt="Image placeholder" src="<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
+                            <img alt="Avatar" src="https://ik.imagekit.io/musicoven/tr:w-100,h-100/<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
                             <?php echo $user->first_name . " " . $user->last_name; ?>
                             <?php if ($user->friend): ?>
                                 <span class="text-muted"> (Friend)</span>
@@ -65,7 +65,7 @@
                 <ul class="list-group list-group-flush">
                     <?php foreach($followers as $user): ?>
                         <li class="list-group-item">
-                            <img alt="Image placeholder" src="<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
+                            <img alt="Avatar" src="https://ik.imagekit.io/musicoven/tr:w-100,h-100/<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
                             <?php echo $user->first_name . " " . $user->last_name; ?>
                             <?php if ($user->friend): ?>
                                 <span class="text-muted"> (Friend)</span>

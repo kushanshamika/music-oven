@@ -10,7 +10,7 @@ foreach($messages as $message):
     <div class="card-body">
         <div class="row mb-1">
             <div class="col-md-1">
-                <img alt="Image placeholder" src="<?php echo $message['avatar']; ?>" class="rounded-circle" width="50">
+                <img alt="Avatar" src="https://ik.imagekit.io/musicoven/tr:w-100,h-100/<?php echo $message['avatar']; ?>" class="rounded-circle" width="50">
             </div>
             <div class="col-md-10">
                 <h5 class="card-title"><?php echo $message['first_name'] . " " . $message['last_name']; ?></h5>

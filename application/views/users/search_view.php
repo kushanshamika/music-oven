@@ -5,7 +5,7 @@
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-2">
-                            <img alt="Image placeholder" src="<?php echo $user->avatar ?>" class="rounded-circle mt-1 ms-1" width="80">
+                            <img alt="Avatar" src="https://ik.imagekit.io/musicoven/tr:w-100,h-100/<?php echo $user->avatar ?>" class="rounded-circle mt-1 ms-1" width="80">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

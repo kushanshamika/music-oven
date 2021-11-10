@@ -12,7 +12,8 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"jimmiw/php-time-ago": "^3.2"
+		"jimmiw/php-time-ago": "^3.2",
+		"imagekit/imagekit": "^2.0"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

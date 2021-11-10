@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <div class="card text-center" style="width: 18rem;">
-        <img src="<?php echo $profile_data->avatar ?>" class="card-img-top" alt="Profile Avatar">
+        <img src="https://ik.imagekit.io/musicoven/tr:w-500,h-500/<?php echo $profile_data->avatar ?>" class="card-img-top" alt="Avatar">
         <div class="card-body">
             <h4 class="card-title"><?php echo $profile_data->first_name . " " . $profile_data->last_name ?></h5>
             <p class="card-text text-muted"><?php echo  element($profile_data->music_genre, $this->config->item('music_genres')); ?></p>

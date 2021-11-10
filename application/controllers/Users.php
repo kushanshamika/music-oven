@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use ImageKit\ImageKit;
+
 class Users extends CI_Controller {
 
 	public function login()
@@ -64,7 +66,7 @@ class Users extends CI_Controller {
         } else {
 
             $config['upload_path']          = './upload/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
     
             $this->load->library('upload', $config);
             $this->load->helper('file');
@@ -72,16 +74,26 @@ class Users extends CI_Controller {
             if ($this->upload->do_upload('avatar'))
             {
 
-                    $avatar = $this->upload->data('full_path');
-    
-    
-                    $this->load->library('s3_upload');
-                    $file_url = $this->s3_upload->upload_file($avatar);
+                $avatar = $this->upload->data('full_path');
+
+                $imageKit = new ImageKit(
+                    "public_R4qTf26kydDY9d+CjdF00KoFsgs=",
+                    "private_tmvIlITjnoNBWn39ihpGCVXnciQ=",
+                    "https://ik.imagekit.io/musicoven" 
+                );
+
+                $uploadFile = $imageKit->upload(array(
+                    'file' => fopen($avatar, "r"),
+                    'fileName' => $this->upload->data('file_name'),
+                    'useUniqueFileName' => true,
+                ));
+                    
+                    $file_url = json_decode(json_encode($uploadFile), true);;
 
                     delete_files('./upload/');
             }
 
-            if ($this->user_model->create_user($file_url)) {
+            if ($this->user_model->create_user($file_url['success']['name'])) {
                 
                 $this->session->set_flashdata('user_registered', 'User has been registered');
                 redirect('users/login');

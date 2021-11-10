@@ -53,7 +53,7 @@
                     <?php foreach($following as $user): ?>
                         <li class="list-group-item">
                             <img alt="Avatar" src="https://ik.imagekit.io/musicoven/tr:w-100,h-100/<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
-                            <?php echo $user->first_name . " " . $user->last_name; ?>
+                            <a class="link-dark" href="<?php echo base_url(); ?>index.php/users/profile/<?php echo $user->username; ?>"><?php echo $user->first_name . " " . $user->last_name; ?></a>
                             <?php if ($user->friend): ?>
                                 <span class="text-muted"> (Friend)</span>
                             <?php endif ?>
@@ -66,7 +66,7 @@
                     <?php foreach($followers as $user): ?>
                         <li class="list-group-item">
                             <img alt="Avatar" src="https://ik.imagekit.io/musicoven/tr:w-100,h-100/<?php echo $user->avatar; ?>" class="rounded-circle" width="40">
-                            <?php echo $user->first_name . " " . $user->last_name; ?>
+                            <a class="link-dark" href="<?php echo base_url(); ?>index.php/users/profile/<?php echo $user->username; ?>"><?php echo $user->first_name . " " . $user->last_name; ?></a>
                             <?php if ($user->friend): ?>
                                 <span class="text-muted"> (Friend)</span>
                             <?php endif ?>

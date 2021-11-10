@@ -125,7 +125,10 @@ class Users extends CI_Controller {
     {
         $data['main_view'] = 'users/public_view';
 		$data['messages'] = $this->message_model->get_profile_messages($username);
-		$data['profile_data'] = $this->user_model->profile($username);
+        $profile_data = $this->user_model->profile($username);
+		$data['profile_data'] = $profile_data;
+        $data['following'] = $this->user_model->get_following($profile_data->id);
+		$data['followers'] = $this->user_model->get_followers($profile_data->id);
 		$data['nav_bar'] = true;
 
 		$this->load->view('layouts/main', $data);

@@ -11,7 +11,7 @@ class Message_model extends CI_Model {
 
 
     $query = $this->db->query("
-        SELECT messages.body, messages.image, messages.date, users.first_name, users.last_name, users.avatar
+        SELECT messages.body, messages.image, messages.date, users.first_name, users.last_name, users.avatar, users.username
         FROM messages
         INNER JOIN users
         ON  messages.user_id=users.id
@@ -41,7 +41,8 @@ class Message_model extends CI_Model {
             messages.date,
             users.first_name,
             users.last_name,
-            users.avatar
+            users.avatar,
+            users.username
         ');
 
         $this->db->from('messages');

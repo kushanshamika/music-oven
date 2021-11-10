@@ -110,7 +110,8 @@ class User_model extends CI_Model {
             followers.friend,
             users.first_name,
             users.last_name,
-            users.avatar
+            users.avatar,
+            users.username
         ');
 
         $this->db->from('followers');
@@ -128,7 +129,8 @@ class User_model extends CI_Model {
             followers.friend,
             users.first_name,
             users.last_name,
-            users.avatar
+            users.avatar,
+            users.username
         ');
 
         $this->db->from('followers');

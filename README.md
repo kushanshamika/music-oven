@@ -38,6 +38,18 @@ Music Oven uses the CodeIgniter default database configuration; therefore, edit 
 
 Edit CodeIgniter base URL in the `config/config.php`
 
+#### - Set [Image Kit](https://imagekit.io/dashboard/) credintials in the `application/controllers/Users.php ` 
+
+ImageKit.io is used to store user profile pictures.
+
+```php
+$imageKit = new ImageKit(
+	"<public key>",
+	"<private key>",
+	"<url endpoint>" 
+);
+```
+
 #### - Run it in a web browser
 
 ## 📝 License
